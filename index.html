@@ -5,21 +5,33 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>تواز</title>
   <style>
+    :root {
+      --ratio: 1.5; /* image width ÷ height. Replace with your image's ratio */
+    }
     html, body {
       margin: 0;
       height: 100%;
       overflow: hidden;
       background: #000;
     }
-    img {
-      display: block;
+    .stage {
       position: fixed;
+      inset: 0;
+      overflow: hidden;
+    }
+    /* Height fills the screen. Width is the larger of the screen width and the
+       width the image would have at full height, so there's never a gap.
+       On narrow portrait screens the right side is clipped and the left stays. */
+    .stage img {
+      position: absolute;
       top: 0;
       left: 0;
-      width: 100vw;
-      height: 100vh;
+      height: 100%;
+      width: max(100%, calc(100vh * var(--ratio)));
+      max-width: none;
       object-fit: cover;
-      object-position: left center;  /* always keep the left edge in view */
+      object-position: left center;
+      display: block;
     }
   </style>
 </head>
