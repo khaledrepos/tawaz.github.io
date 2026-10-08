@@ -11,26 +11,15 @@
       overflow: hidden;
       background: #000;
     }
-    .stage {
-      position: fixed;
-      inset: 0;
-      overflow: hidden;
-    }
-    .stage img {
+    img {
       display: block;
+      position: fixed;
+      top: 0;
+      left: 0;
       width: 100vw;
       height: 100vh;
       object-fit: cover;
-      object-position: center;
-    }
-
-    /* Below 600px wide: show only the leftmost third of the image */
-    @media (max-width: 600px) {
-      .stage img {
-        width: 300vw;          /* three screen-widths wide */
-        max-width: none;
-        object-position: left center;
-      }
+      object-position: left center;  /* always keep the left edge in view */
     }
   </style>
 </head>
